@@ -18,6 +18,7 @@ def load_production_model_from_registry(
     # find model version to deploy
     api = API(api_key)
     model_details = api.get_registry_model_details(workspace, model_name)['versions']
+    print("model_details", model_details)
     model_versions = [md['version'] for md in model_details if md['status'] == status]
     if len(model_versions) == 0:
         logger.error('No production model found')

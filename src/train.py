@@ -54,7 +54,7 @@ def train(
     experiment = Experiment(
         api_key = os.environ["COMET_ML_API_KEY"],
         workspace=os.environ["COMET_ML_WORKSPACE"],
-        project_name = "hands-on-train-and-deploy-tutorial",
+        project_name = "mindworksai",
     )
     experiment.add_tag(model)
 
@@ -108,11 +108,11 @@ def train(
     # log model artifact
     # experiment.log_model('eth-eur-1h-price-predictor', str(MODELS_DIR / 'model.pkl'))
     experiment.log_model(str(model_fn), str(MODELS_DIR / 'model.pkl'))
-    
+    print(str(model_fn))
     # breakpoint()
 
     # log model to the registry
-    # experiment.register_model('eth-eur-1h-price-predictor')
+    experiment.register_model(str(model_fn))
     
 
 
